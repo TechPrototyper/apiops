@@ -49,7 +49,7 @@ internal static class Git
 
     private static async ValueTask<string> GetDiffTreeOutput(CommitId commitId, DirectoryInfo baseDirectory)
     {
-        var command = Command.Run("git", "-C", baseDirectory.FullName, "diff-tree", "--no-commit-id", "--name-status", "--relative", "-r", $"{commitId}^", $"{commitId}");
+        var command = Command.Run("git", "-C", baseDirectory.FullName, "diff-tree", "--no-commit-id", "--name-status", "--relative", "-r", $"{commitId}", "HEAD");
         var commandResult = await command.Task;
 
         return commandResult.Success
